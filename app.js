@@ -13,14 +13,15 @@ app.use(
 app.use(bodyParser.json());
 
 //db config 
-const db = proccess.env.MONGO_URI;
+const db =require("./config/keys").mongoURI;
 
-console.log(process.env.TEST_VAR)
+console.log('Testing! --->',require("./config/keys").test)
 
 mongoose.connect(
   db,
-  {useNewUrlParser: true}
+  { useNewUrlParser: true, useUnifiedTopology: true  }
 )
 .then(() => console.log('Mongo successfully connected!'))
 .catch(err => console.error(err));
 
+module.exports = app;
