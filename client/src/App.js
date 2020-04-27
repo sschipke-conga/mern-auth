@@ -1,8 +1,5 @@
 import React from 'react';
-<<<<<<< HEAD
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-=======
->>>>>>> 4c783b65d405cf54f220567a5c5473d2be2cd073
 import './App.css';
 
 import Landing from './components/layout/Landing';
@@ -12,7 +9,6 @@ import Register from './components/auth/Register';
 
 function App() {
   return (
-<<<<<<< HEAD
     <Router>
       <div className="App">
         <Navbar />
@@ -21,10 +17,6 @@ function App() {
         <Route exact path="/login" component={Login} />
       </div>
     </Router>
-=======
-    <div className="App">
-    </div>
->>>>>>> 4c783b65d405cf54f220567a5c5473d2be2cd073
   );
 }
 
