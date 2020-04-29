@@ -18,11 +18,10 @@ class Register extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    if(nextProps.errors) {
-      this.setState({
-        errors: nextProps.errors
-      })
+  componentDidMount() {
+    const { auth, history } = this.props
+    if(auth.isAuthenticated) {
+      history.push('/dashboard')
     }
   }
 
@@ -44,7 +43,7 @@ class Register extends Component {
     registerUser(newUser, history);
   };
   render() {
-    const { errors } = this.state;
+    const { errors } = this.props;
     return (
       <div className="container">
         <div className="row">
