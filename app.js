@@ -18,8 +18,6 @@ app.use(bodyParser.json());
 //db config 
 const db =require("./config/keys").mongoURI;
 
-console.log('Testing! --->',require("./config/keys").test)
-
 mongoose.connect(
   db,
   { useNewUrlParser: true, useUnifiedTopology: true  }
@@ -32,6 +30,10 @@ app.use(passport.initialize());
 require("./config/passport")(passport);
 
 app.use("/api/users", users);
+
+app.get("/", (req, res) => {
+  return res.status(200).json("MERN")
+})
 
 
 module.exports = app;
