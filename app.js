@@ -23,6 +23,7 @@ if (process.env.NODE_ENV === "production") {
       path.resolve(__dirname, "client", "build", "index.html")
     );
   });
+  console.log(process.env.NODE_ENV)
 }
 
 //db config 
@@ -41,9 +42,9 @@ require("./config/passport")(passport);
 
 app.use("/api/users", users);
 
-app.get("/", (req, res) => {
-  return res.status(200).json("MERN")
-})
+// app.get("/", (req, res) => {
+//   return res.status(200).json("MERN")
+// })
 
 
 module.exports = app;
