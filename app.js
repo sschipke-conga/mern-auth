@@ -23,7 +23,6 @@ if (process.env.NODE_ENV === "production") {
       path.resolve(__dirname, "client", "build", "index.html")
     );
   });
-  console.log(process.env.NODE_ENV)
 }
 
 //db config 
