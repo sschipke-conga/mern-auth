@@ -26,7 +26,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 //db config 
-const db = `"${process.env.MONGO_URI}"`
+const db = process.env.MONGO_URI
 
 console.log(db)
 
