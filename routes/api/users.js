@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const keys = process.env.SECRET_OR_KEY;
+const key = process.env.SECRET_OR_KEY;
 
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
@@ -47,7 +47,6 @@ router.post("/login", (req, res) => {
   if (!isValid) {
     return res.status(400).json(errors);
   }
-
   const { email, password } = req.body
 
   User.findOne({ email }).then(user => {
@@ -55,7 +54,7 @@ router.post("/login", (req, res) => {
       return res.status(404).json({ emailnotfound: "Email not found"})
     }
 
-    bcrypt.compare(password, user.password).then (isMatch => {
+    bcrypt.compare(password, user.password).then(isMatch => {
       if(isMatch) {
         const payload = {
           id: user.id,
@@ -64,19 +63,19 @@ router.post("/login", (req, res) => {
 
         jwt.sign(
           payload,
-          keys.secretOrKey,
+          key,
           {
             expiresIn: 432000
           },
           (err, token) => {
-            res.json({
+            res.status(200).json({
               success: true,
               token: "Bearer " + token
             })
           }
         )
       } else {
-        return res.status(400).json({ passwordincorrect: "Password or email incorrect"})
+        return res.status(400).json({ loginIncorrect: "Password or email incorrect"})
       }
     })
   })
