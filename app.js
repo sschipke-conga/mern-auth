@@ -16,7 +16,7 @@ app.use(
 app.use(bodyParser.json());
 
 if (process.env.NODE_ENV === "production") {
-  app.user(express.static("client/build"));
+  app.use(express.static("client/build"));
 
   app.get("*", (req, res) => {
     res.sendFile(
