@@ -39,7 +39,6 @@ class Register extends Component {
       password,
       password2
     };
-    console.log(newUser);
     registerUser(newUser, history);
   };
   render() {

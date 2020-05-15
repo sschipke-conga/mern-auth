@@ -73,7 +73,7 @@ class Login extends Component {
                   id="email"
                   type="email"
                   className={classnames("", {
-                    invalid: errors.email || errors.emailnotfound
+                    invalid: errors.email || errors.emailnotfound || errors.loginIncorrect
                   })}
                 />
                 <label htmlFor="email">Email</label>
@@ -90,13 +90,13 @@ class Login extends Component {
                   id="password"
                   type="password"
                   className={classnames("", {
-                    invalid: errors.password || errors.passwordincorrect
+                    invalid: errors.password || errors.loginIncorrect
                   })}
                 />
                 <label htmlFor="password">Password</label>
                 <span className="red-text">
                   {errors.password}
-                  {errors.passwordincorrect}
+                  {errors.loginIncorrect}
                 </span>
               </div>
               <div className="col s12" style={{ paddingLeft: "11.250px" }}>
