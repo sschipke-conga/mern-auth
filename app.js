@@ -1,5 +1,5 @@
 const express = require("express");
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 
@@ -15,8 +15,22 @@ app.use(
 
 app.use(bodyParser.json());
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+
+  app.get("*", (req, res) => {
+    res.sendFile(
+      path.resolve(__dirname, "client", "build", "index.html")
+    );
+  });
+}
+
 //db config 
-const db =process.env.MONGO_URI
+const db = process.env.MONGO_URI;
+
+console.log(db)
+
+
 
 mongoose.connect(
   db,
@@ -30,10 +44,5 @@ app.use(passport.initialize());
 require("./config/passport")(passport);
 
 app.use("/api/users", users);
-
-app.get("/", (req, res) => {
-  return res.status(200).json("MERN")
-})
-
 
 module.exports = app;
