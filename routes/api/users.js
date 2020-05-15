@@ -47,12 +47,9 @@ router.post("/login", (req, res) => {
   if (!isValid) {
     return res.status(400).json(errors);
   }
-
   const { email, password } = req.body
-  console.log('body!!: ->',req.body)
 
   User.findOne({ email }).then(user => {
-    console.log('USER', user)
     if(!user) {
       return res.status(404).json({ emailnotfound: "Email not found"})
     }
